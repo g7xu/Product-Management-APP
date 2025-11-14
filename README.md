@@ -1,87 +1,95 @@
-# Product Management Page - React Assignment
+# Product Management App - Building the wheel
 
-## Goal
+This repository demonstrates my learning journey with React frontend development. It's a simple web application (WAP) frontend interface powered by React that performs basic product management operations.
 
-Create a product management page using React class components or functional components. The page should allow users to:
+## Thinking Process
 
-- View a list of products.
-- Add new products to the list.
-- Delete existing products from the list.
-- When the page is first loaded, three products should be displayed.
+I chose to use **class components** to deeply understand React's lifecycle methods and state management. The main `ProductTable` component encapsulates all the product management logic, demonstrating how React components can be self-contained units that manage their own state.
 
-## Instructions
+The result of the render function is where we need to return a single component. I think another important thing I realized is that when passing functions into the component returned by the render, it is important that we either use arrow functions or have `this` bound so that the JavaScript `this` statement can have the right context.
 
-### 1. Fork the Project
+In addition, I also tried to implement the entire React lifecycle in this product where we have the constructor, the component mount, and render that represent the initial state, middle state, and final rendering state.
 
-- Click the **[Fork this project on StackBlitz](https://stackblitz.com/edit/vitejs-vite-yuceeyra)** link to create a copy of the project in your StackBlitz account.
+## Data Flow
+- Initial Props flow down from parent (`App.jsx`) to child (`ProductTable`)
+- State is initialized in constructor() and managed throughout the component
+- User interactions with `add` and `delete` buttons trigger state updates via `setState()`
 
-### 2. Create a React Component
+## Key Learnings
+- **Lifecycle Methods**: Using `constructor` for initialization and `componentDidMount` to understand when components are ready
+- **Immutable Updates**: Always creating new arrays/objects when updating state, never mutating directly
 
-- Create a component named `ProductTable`.
-- In this component, you will:
-  - **Receive an initial list of products via props** (passed from the parent component).
-  - **Use the `state` to manage the list of products**.
+This project helped me understand the fundamental patterns of React development and how to build interactive user interfaces with proper state management.
 
-### 3. Implement Product List Display
+## Quick Start
 
-- In the `render()` method, display a table with the following columns:
-  - Product ID
-  - Product Name
-  - Action (Delete button)
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
 
-### 4. Add Product Functionality
+### Installation
 
-- Implement an input field and a button to allow users to add a new product.
-  - When the user types a product name and clicks "Add Product," a new product should be added to the product list (ensure it has a unique `id`).
+1. Clone the repository:
+```bash
+git clone https://github.com/g7xu/Product-Management-APP.git
+cd Product-Management-APP
+```
 
-### 5. Delete Product Functionality
+2. Install dependencies:
+```bash
+npm install
+```
 
-- Each product in the list should have a "Delete" button.
-  - When the user clicks on the "Delete" button, the corresponding product should be removed from the list.
+3. Start the development server:
+```bash
+npm run dev
+```
 
-### 6. Initial Data
+4. Open your browser and navigate to the URL shown in the terminal (typically `http://localhost:5173`)
 
-- When the page first loads, there should be three products displayed in the table. These products will be passed into the component via props from the parent component.
+### Build for Production
 
-### 7. React Component Lifecycle
+```bash
+npm run build
+```
 
-- Use lifecycle methods where appropriate (e.g., `constructor`, `useState`, etc.) to manage state and handle events.
+The built files will be in the `dist` directory.
 
-### 8. Bonus Challenge (Optional)
+### Preview Production Build
 
-- Try to add more advanced features like:
-  - Validation on the product name (e.g., ensure it's not empty).
-  - Updating the product name after it’s been added (e.g., edit product feature).
+```bash
+npm run preview
+```
 
----
+## File Structure
 
-## Setup Instructions
+```
+Product-Management-APP/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml          # GitHub Actions workflow for deployment
+├── public/
+│   └── vite.svg                # Public assets
+├── src/
+│   ├── compoents/
+│   │   └── productTable_component.jsx  # Main ProductTable class component
+│   ├── App.jsx                 # Root component, passes initial products
+│   ├── App.css                 # App-specific styles
+│   ├── main.jsx                # Application entry point
+│   └── index.css               # Global styles
+├── index.html                  # HTML template
+├── vite.config.js              # Vite configuration (includes base path for GitHub Pages)
+├── package.json                # Project dependencies and scripts
+└── README.md                   # This file
+```
 
-1. **Fork this project**:
+### Key Files
 
-   - Click the **[Fork this project on StackBlitz](https://stackblitz.com/edit/vitejs-vite-yuceeyra)** link to create a copy of the project in your StackBlitz account.
+- **`src/compoents/productTable_component.jsx`**: The main component containing all product management logic (view, add, delete)
+- **`src/App.jsx`**: Parent component that initializes and passes product data
+- **`vite.config.js`**: Configuration for Vite build tool, includes base path for GitHub Pages deployment
 
-2. **Start Editing**:
+## Live Demo
 
-   - Once you’ve forked the project, you can start editing directly in the StackBlitz editor.
-
-3. **Live Preview**:
-
-   - StackBlitz automatically starts a live preview for you, and you can see the app running in the browser. The product management page should load automatically.
-
-4. **Make Your Changes**:
-   - Implement the required functionality as described in the instructions.
-
----
-
-## Notes
-
-- Remember to use React's `state` to store and manage the list of products.
-- The initial list of products will be passed in via props when the page loads.
-- You can use simple buttons to delete products from the list.
-- Be sure to structure your code according to React's best practices for class components or functional components.
-
-## Submission Instructions
-
-- **Copy your StackBlitz link** after completing the project.
-- **Submit the link to Drill** for grading.
+The application is deployed on GitHub Pages:
+**https://g7xu.github.io/Product-Management-APP/**

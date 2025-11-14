@@ -29,7 +29,6 @@ export default class ProductTable extends Component {
 
   render() {
     return <div>
-      {/* {Product Section} */}
       <div>
         <input type="text"
         placeholder="Product Name"
