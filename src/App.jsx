@@ -10,10 +10,6 @@ function App() {
 
   return (
     <>
-      <h3>
-        Follow README.md file and finish the TODO part (and this line can be
-        removed)
-      </h3>
       {<ProductTable init_table_prop={initialProducts} />}
       {/* <ProductTable products={initialProducts} /> */}
     </>

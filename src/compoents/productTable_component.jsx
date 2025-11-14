@@ -10,9 +10,16 @@ export default class ProductTable extends Component {
   }
 
   handleAddProduct = () => {
-    const maxId = Math.max(...this.state.products.map((product) => product.id));
+    const maxId = this.state.products.length > 0 ? Math.max(...this.state.products.map((product) => product.id)) : 0;
     this.setState({
       products: [...this.state.products, {id: maxId + 1, name: this.state.newProductName}]
+    })
+    this.setState({newProductName: ''});
+  }
+
+  handleDeleteProduct = (id) => {
+    this.setState({
+      products: this.state.products.filter((product) => product.id !== id)
     })
   }
 
@@ -41,7 +48,7 @@ export default class ProductTable extends Component {
               <td>{product.id}</td>
               <td>{product.name}</td>
               <td>
-                <button>Delete</button>
+                <button onClick={() => this.handleDeleteProduct(product.id)}>Delete</button>
               </td>
             </tr>
           ))}
