@@ -82,14 +82,3 @@ Product-Management-APP/
 ├── package.json                # Project dependencies and scripts
 └── README.md                   # This file
 ```
-
-### Key Files
-
-- **`src/compoents/productTable_component.jsx`**: The main component containing all product management logic (view, add, delete)
-- **`src/App.jsx`**: Parent component that initializes and passes product data
-- **`vite.config.js`**: Configuration for Vite build tool, includes base path for GitHub Pages deployment
-
-## Live Demo
-
-The application is deployed on GitHub Pages:
-**https://g7xu.github.io/Product-Management-APP/**
