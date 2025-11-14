@@ -4,16 +4,27 @@ export default class ProductTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products : this.props.init_table_prop
-    };
+      products : this.props.init_table_prop,
+      newProductName: ''
+    }; 
+  }
+
+  handleAddProduct = () => {
+    const maxId = Math.max(...this.state.products.map((product) => product.id));
+    this.setState({
+      products: [...this.state.products, {id: maxId + 1, name: this.state.newProductName}]
+    })
   }
 
   render() {
     return <div>
       {/* {Product Section} */}
       <div>
-        <input type="text" placeholder="Product Name" />
-        <button>Add Product</button>
+        <input type="text"
+        placeholder="Product Name"
+        value={this.state.newProductName}
+        onChange={(e) => this.setState({newProductName: e.target.value})}/>
+        <button onClick={this.handleAddProduct}>Add Product</button>
       </div>
 
       <table>
