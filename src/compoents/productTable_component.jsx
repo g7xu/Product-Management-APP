@@ -23,6 +23,10 @@ export default class ProductTable extends Component {
     })
   }
 
+  componentDidMount() {
+    console.log('Products Table Component is ready for rendering!');
+  }
+
   render() {
     return <div>
       {/* {Product Section} */}
